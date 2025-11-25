@@ -18,10 +18,13 @@ const FileUploadExtractor = () => {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:5001/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const data = await res.json();
       // backend may return { text: "..." } or plain text — handle both
@@ -44,11 +47,14 @@ const FileUploadExtractor = () => {
     setAnalysis("");
 
     try {
-      const res = await fetch("http://localhost:5001/api/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: extractedText }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/analyze`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: extractedText }),
+        }
+      );
 
       // backend might return JSON { analysis: "..." } or plain text
       const contentType = res.headers.get("content-type") || "";
