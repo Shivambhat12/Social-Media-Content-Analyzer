@@ -306,8 +306,6 @@ const FileUploadExtractor = () => {
               </div>
             </div>
           </div>
-
-          {/* Footer note */}
           <div className="mt-6 text-xs text-gray-500">
             Tip: For best OCR results, upload clear scanned images or PDFs.
           </div>
